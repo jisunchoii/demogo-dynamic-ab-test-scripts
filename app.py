@@ -5,8 +5,6 @@ import numpy as np
 from scipy import stats
 import matplotlib.pyplot as plt
 import time
-import threading
-from streamlit.runtime.scriptrunner import get_script_run_ctx
 
 # Create the DynamoDB client
 dynamodb = boto3.client('dynamodb', region_name='ap-northeast-2')
