@@ -1,4 +1,4 @@
 import requests
 
-for i in range(501):
+while True:
     response = requests.get('YOUR_API_URL')
