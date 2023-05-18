@@ -6,7 +6,6 @@ from scipy import stats
 import matplotlib.pyplot as plt
 import time
 
-# Create the DynamoDB client
 dynamodb = boto3.client('dynamodb', region_name='ap-northeast-2')
 ap_invocation = ap_reward = sm_invocation = sm_reward = 0
 
@@ -29,12 +28,7 @@ def update_beta_distribution(batch_count):
     
     alpha_sm = sm_reward
     beta_sm = sm_invocation - sm_reward
-    
-    
-    st.text('model_AP :'+str(ap_invocation)+ '(invocation),'+str(ap_reward)+'(reward_click)')
-    st.text('model_SM :'+str(sm_invocation)+ '(invocation),'+str(sm_reward)+'(reward_click)')
-    
-    
+      
     fig, axs = plt.subplots()
     x = np.arange (0, 0.1, 0.001)
     axs.set(title='batch #' + str(batch_count), xlabel='click_rate', ylabel='relative probability')
@@ -52,5 +46,5 @@ def update_data(batch_count):
         time.sleep(60)
         batch_count += 1
 
-
-update_data(batch_count)
+update_beta_distribution(batch_count)
+# update_data(batch_count)
